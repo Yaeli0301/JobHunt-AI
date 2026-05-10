@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ai-job-agent-api
+    env: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      # Set these in Render dashboard (Secrets):
+      # - MONGODB_URI
+      # - JWT_SECRET
+      # - FRONTEND_URL
+      # - JWT_EXPIRES_IN (optional, default 15m in prod)
+      # - JWT_REFRESH_EXPIRES_IN (optional)
+      # - OPENAI_API_KEY (optional)
